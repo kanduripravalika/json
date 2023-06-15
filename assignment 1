@@ -1,0 +1,64 @@
+import json
+class Employee:
+    def __init__(self, name, dob, height, city, state):
+        self.name = name
+        self.dob = dob
+        self.height = height
+        self.city = city
+        self.state = state
+def read_employee_info():
+    with open("employee.json") as file:
+        employee_data = json.load(file)
+
+    employees = []
+    for emp_info in employee_data:
+        employee = Employee(emp_info["Name"], emp_info["DOB"], emp_info["Height"], emp_info["City"], emp_info["State"])
+        employees.append(employee)
+
+    for employee in employees:
+        print(f"Name: {employee.name}")
+        print(f"DOB: {employee.dob}")
+        print(f"Height: {employee.height}")
+        print(f"City: {employee.city}")
+        print(f"State: {employee.state}")
+        print("--------------------")
+
+def write_states_capitals():
+    states_capitals = {
+        "Maharashtra": "Mumbai",
+        "Karnataka": "Bengaluru",
+        "Tamil Nadu": "Chennai",
+        "Uttar Pradesh": "Lucknow",
+        "Gujarat": "Gandhinagar",
+        "Rajasthan": "Jaipur",
+        "West Bengal": "Kolkata"
+    }
+
+    with open("states_capitals.json", "w") as file:
+        json.dump(states_capitals, file)
+
+    print("States and Capitals information written to states_capitals.json successfully!")
+read_employee_info()
+write_states_capitals()
+
+
+
+#creating json file 
+
+[
+  {
+    "Name": "John Doe",
+    "DOB": "1990-01-01",
+    "Height": "175 cm",
+    "City": "New York",
+    "State": "New York"
+  },
+  {
+    "Name": "Jane Smith",
+    "DOB": "1992-03-15",
+    "Height": "165 cm",
+    "City": "Los Angeles",
+    "State": "California"
+  },
+  
+]
